@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Datebook</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="note_name">Название задачи</string>
     <string name="date_end">Дата выполнения задачи</string>
@@ -10,4 +9,5 @@
     <string name="choose_date">Выберете дату</string>
     <string name="choose_time">Выберете время</string>
     <string name="time_format">%1$d:%2$d</string>
+    <string name="fill_all_fields">Заполните все поля</string>
 </resources>

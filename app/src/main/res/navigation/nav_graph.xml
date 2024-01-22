@@ -3,20 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/calendarWithDailyNotesFragment">
+    app:startDestination="@id/calendarWithDailyTasksFragment">
 
     <fragment
-        android:id="@+id/calendarWithDailyNotesFragment"
-        android:name="com.example.datebook.view.CalendarWithDailyNotesFragment"
-        android:label="fragment_calendar_with_daily_notes"
-        tools:layout="@layout/fragment_calendar_with_daily_notes" >
+        android:id="@+id/calendarWithDailyTasksFragment"
+        android:name="com.example.datebook.presentation.mainscreen.CalendarWithDailyTasksFragment"
+        android:label="fragment_calendar_with_daily_tasks"
+        tools:layout="@layout/fragment_calendar_with_daily_tasks">
         <action
-            android:id="@+id/action_calendarWithDailyNotesFragment_to_addNoteFragment"
-            app:destination="@id/addNoteFragment" />
+            android:id="@+id/action_calendarWithDailyNotesFragment_to_addTaskFragment"
+            app:destination="@id/addTaskFragment" />
     </fragment>
     <fragment
-        android:id="@+id/addNoteFragment"
-        android:name="com.example.datebook.view.AddNoteFragment"
-        android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        android:id="@+id/addTaskFragment"
+        android:name="com.example.datebook.presentation.addtask.AddTaskFragment"
+        android:label="fragment_add_tasks"
+        tools:layout="@layout/fragment_add_task" >
+        <argument
+            android:name="entry_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>

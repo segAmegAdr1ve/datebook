@@ -1,10 +1,11 @@
-package com.example.datebook
+package com.example.datebook.presentation.mainactivity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import org.json.JSONObject
-import java.sql.Timestamp
+import com.example.datebook.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
