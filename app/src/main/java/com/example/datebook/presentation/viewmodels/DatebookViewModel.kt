@@ -69,9 +69,6 @@ class DatebookViewModel @Inject constructor(
     fun isEntryValid(
         entryName: String, dateEnd: String, timeEnd: String, description: String
     ): Boolean {
-        if (entryName.isBlank() || dateEnd.isBlank() || timeEnd.isBlank() || description.isBlank()) {
-            return false
-        }
-        return true
+        return !(entryName.isBlank() || dateEnd.isBlank() || timeEnd.isBlank() || description.isBlank())
     }
 }

@@ -1,18 +1,13 @@
 package com.example.datebook.data.repository
 
-import android.util.Log
-import androidx.core.graphics.blue
 import com.example.datebook.data.database.dao.DatebookDao
 import com.example.datebook.data.mappers.Mapper
 import com.example.datebook.domain.entity.CompactEntryModel
 import com.example.datebook.domain.entity.DetailEntryModel
 import com.example.datebook.domain.repository.LocalRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.job
+import kotlinx.coroutines.withContext
 import java.util.Calendar
-import java.util.Date
 import javax.inject.Inject
 
 class LocalRepositoryImpl @Inject constructor(
@@ -30,13 +25,15 @@ class LocalRepositoryImpl @Inject constructor(
         val calendar = Calendar.getInstance()
         val listOfEntries = mutableListOf<CompactEntryModel>()
 
-        datebookDao.getAllEntries().forEach {
-            calendar.timeInMillis = it.dateFinish
-            if (calendar.get(Calendar.YEAR) == year &&
-                calendar.get(Calendar.MONTH) == month &&
-                calendar.get(Calendar.DAY_OF_MONTH) == dayOfMonth
-            ) {
-                listOfEntries.add(mapper.toCompactEntryModel(it))
+        withContext(Dispatchers.IO) {
+            datebookDao.getAllEntries().forEach {
+                calendar.timeInMillis = it.dateFinish
+                if (calendar.get(Calendar.YEAR) == year &&
+                    calendar.get(Calendar.MONTH) == month &&
+                    calendar.get(Calendar.DAY_OF_MONTH) == dayOfMonth
+                ) {
+                    listOfEntries.add(mapper.toCompactEntryModel(it))
+                }
             }
         }
         return listOfEntries
